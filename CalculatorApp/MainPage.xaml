@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorApp.MainPage"
+             BackgroundColor="Black">
+
+    <ContentPage.WidthRequest>400</ContentPage.WidthRequest>
+    <ContentPage.HeightRequest>600</ContentPage.HeightRequest>
+
+    <Grid Margin="20" Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry x:Name="Display"
+               Grid.Row="0"
+               Grid.Column="0"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               FontSize="24"
+               IsReadOnly="True"
+               HorizontalTextAlignment="End"
+               Text = "0" />
+        <!-- <Label -->
+        <!--     x:Name="Display" -->
+        <!--     Grid.Row="0" -->
+        <!--     Grid.Column="0" -->
+        <!--     HorizontalOptions="FillAndExpand" -->
+        <!--     VerticalOptions="Center" -->
+        <!--     FontSize="24" -->
+        <!--     HorizontalTextAlignment="End" -->
+        <!--     Text = "0" -->
+        <!-- /> -->
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="C" Grid.Row="0" Grid.Column="0" BackgroundColor="LightGray" x:Name="Delete" Margin="11" Clicked="Delete_Clicked"/>
+            <Button Text="±" Grid.Row="0" Grid.Column="1" BackgroundColor="LightGray" x:Name="PosNeg" Margin="11" Clicked="PosNeg_Clicked"/>
+            <Button Text="%" Grid.Row="0" Grid.Column="2" BackgroundColor="LightGray" x:Name="Percent" Margin="11" Clicked="Percent_Clicked"/> <Button Text="÷" Grid.Row="0" Grid.Column="3" BackgroundColor="Orange" TextColor="White" x:Name="Division" Margin="11" Clicked="Division_Clicked"/>
+
+            <Button Text="7" Grid.Row="1" Grid.Column="0" x:Name="Seven" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="8" Grid.Row="1" Grid.Column="1" x:Name="Eight" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="9" Grid.Row="1" Grid.Column="2" x:Name="Nine" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="×" Grid.Row="1" Grid.Column="3" BackgroundColor="Orange" TextColor="White" x:Name="Multiply" Margin="11" Clicked="Multiply_Clicked"/>
+
+            <Button Text="4" Grid.Row="2" Grid.Column="0" x:Name="Four" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="5" Grid.Row="2" Grid.Column="1" x:Name="Five" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="6" Grid.Row="2" Grid.Column="2" x:Name="Six" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="−" Grid.Row="2" Grid.Column="3" BackgroundColor="Orange" TextColor="White" x:Name="Subtracked" Margin="11" Clicked="Subtracked_Clicked"/>
+
+            <Button Text="1" Grid.Row="3" Grid.Column="0" x:Name="One" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="2" Grid.Row="3" Grid.Column="1" x:Name="Two" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="3" Grid.Row="3" Grid.Column="2" x:Name="Three" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="+" Grid.Row="3" Grid.Column="3" BackgroundColor="Orange" TextColor="White" x:Name="Add" Margin="11" Clicked="Add_Clicked"/>
+
+            <Button Text="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" x:Name="Zero" Margin="11" BackgroundColor="White" Clicked="Number_Clicked"/>
+            <Button Text="." Grid.Row="4" Grid.Column="2" x:Name="Coma" Margin="11" BackgroundColor="LightGray" Clicked="Coma_Clicked"/>
+            <Button Text="=" Grid.Row="4" Grid.Column="3" BackgroundColor="Orange" TextColor="White" x:Name="Equal" Margin="11" Clicked="Equal_Clicked"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
