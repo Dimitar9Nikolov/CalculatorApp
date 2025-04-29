@@ -4,7 +4,7 @@ namespace CalculatorApp
     public partial class MainPage : ContentPage
     {
         string currentInput = "";
-        
+        List<string> enters = new List<string>();
         string Operator = "";
 
         public MainPage()
@@ -25,7 +25,7 @@ namespace CalculatorApp
             if (Display.Text != "0")
             {
                 Display.Text = "0";
-
+                enters.Clear();
                 Operator = "";
             }
             await AnimateButton(Delete);
@@ -36,10 +36,10 @@ namespace CalculatorApp
             if (Display.Text != "0")
             {
                 double lastNumber;
+                string[] currentNums = currentInput.Split(' ');
+                var currentNumsList = currentNums.ToList();
                 if (double.TryParse(currentInput, out lastNumber))
                 {
-                    string[] currentNums = currentInput.Split(' ');
-                    var currentNumsList = currentNums.ToList();
                     currentNumsList.RemoveAt(currentNumsList.Count - 1); // Remove the last number
                     lastNumber = -lastNumber; // Flip the sign
 
@@ -70,7 +70,7 @@ namespace CalculatorApp
             if (last != "÷")
             {
                 Display.Text += "÷";
-        
+                enters.Add("÷");
                 Operator += "÷";
                 await AnimateButton(Division);
             }
@@ -87,10 +87,13 @@ namespace CalculatorApp
             if (Display.Text == "0")
             {
                 Display.Text = number;
+                enters.Clear();
+                enters.Add(number);
             }
             else
             {
                 Display.Text += number;
+                enters.Add(number);
             }
             currentInput += number;
             await AnimateButton(button);
@@ -104,7 +107,7 @@ namespace CalculatorApp
             if (last != "-" && last != "+" && last != "x" && last != "÷")
             {
                 Display.Text += "x";
-          
+                enters.Add("x");
                 Operator += "x";
                 await AnimateButton(Multiply);
             }
@@ -120,7 +123,7 @@ namespace CalculatorApp
             if (last != "-" && last != "+" && last != "x" && last != "÷")
             {
                 Display.Text += "-";
-           
+                enters.Add("-");
                 Operator += "- ";
                 await AnimateButton(Subtracked);
             }
@@ -136,7 +139,7 @@ namespace CalculatorApp
             {
 
                 Display.Text += "+";
-       
+                enters.Add("+");
                 Operator += "+ ";
                 await AnimateButton(Add);
                 currentInput = "";
@@ -148,7 +151,8 @@ namespace CalculatorApp
         {
             if (!Display.Text.EndsWith(","))
             {
-   
+                enters.Add(",");
+                
                 Display.Text += ",";
             }
             await AnimateButton(Coma);
@@ -193,6 +197,8 @@ namespace CalculatorApp
                 Operator = "";
                 result = Math.Round(result, 2);
                 Display.Text = result.ToString();
+                enters.Clear();
+                enters.Add(result.ToString());
             }
         }
 
